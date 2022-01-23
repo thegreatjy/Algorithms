@@ -7,7 +7,7 @@ import java.util.*;
 public class Main {
 	static int[][] A;
 	static boolean[][] visit;
-	static List list;
+	static List<Integer> list;
 	static int R, C, max;
 	//사방위 
 	static int[] row= {-1, 0, 1, 0};
