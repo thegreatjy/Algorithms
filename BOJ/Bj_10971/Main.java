@@ -7,7 +7,6 @@ public class Main {
 	static int N, result;
 	static int[][] W;
 	static ArrayList<Integer> list;
-	//static boolean[] visited;
 
 	//현재 위치, 방문 도시 리스트, 누적 비용 
 	public static void tsp(int cur, ArrayList<Integer> list, int cost) {
@@ -26,10 +25,8 @@ public class Main {
 		
 		for(int i=0;i<N;i++) {
 			if(W[cur][i]!=0 && !list.contains(i)) {
-				//visited[i]=true;
 				list.add(i);
 				tsp(i, list, cost+W[cur][i]);
-				//visited[i]=false;
 				list.remove(list.size()-1);
 			}
 		}
@@ -41,7 +38,7 @@ public class Main {
 		N=Integer.parseInt(br.readLine());
 		W=new int[N][N];
 		list=new ArrayList<Integer>();
-		//visited=new boolean[N];
+		
 		for(int i=0;i<N;i++) {
 			String line[]=br.readLine().split(" ");
 			for(int j=0;j<N;j++) {
@@ -49,15 +46,11 @@ public class Main {
 			}
 		}
 		result=Integer.MAX_VALUE;
-		
-		for(int i=0;i<N;i++) {
-			//visited[i]=true;
-			list.add(i);
-			tsp(i, list, 0);
-			list.remove(list.size()-1);
-			//visited[i]=false;
-		}
-		
+		//시작점이 0
+		//모든 점을 다 방문하는 순회이므로 모든 점을 시작점으로 tsp를 계산해주지 않아도 된다.
+		list.add(0);
+		tsp(0, list, 0);
+			
 		BufferedWriter bw=new BufferedWriter(new OutputStreamWriter(System.out));
 		bw.write(Integer.toString(result));
 		bw.flush(); bw.close();		
