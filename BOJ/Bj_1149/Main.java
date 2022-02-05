@@ -6,9 +6,6 @@ import java.io.*;
 public class Main {
 	static int N;
 	static int[][] house;
-		
-	public static void dfs(int level, int last) {
-	}
 	
 	public static void main(String[] args)throws Exception {
 		// TODO Auto-generated method stub
