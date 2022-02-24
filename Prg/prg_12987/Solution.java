@@ -28,11 +28,33 @@ public class Solution {
         return cnt;
     }
 	
+	public int solution2(int[] A, int[] B) {
+        int answer = 0;
+        
+        Arrays.sort(A);
+        Arrays.sort(B);
+        
+        int idxA = 0, idxB = 0;
+        while (idxA < A.length) {
+        	if(idxB >= B.length)	break;
+            if (A[idxA] < B[idxB]) {
+                answer++;
+                idxB++;
+                idxA++;
+            }else{
+            	idxB++;
+            	
+            }
+        }
+        
+        return answer;
+    }
+	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		int[] A = {2,2,2,2};
-		int[] B = {1,1,1,1};
-		int result = new Solution().solution(A, B);
+		int[] A = {5,1,3,7};
+		int[] B = {2,2,6,8};
+		int result = new Solution().solution2(A, B);
 		System.out.println(result);
 	}
 
