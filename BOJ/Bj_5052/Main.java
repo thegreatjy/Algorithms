@@ -22,7 +22,6 @@ public class Main {
 		String[] phone;
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
-		//String result = "";
 		t = Integer.parseInt(br.readLine());
 		
 		for(int a=0;a<t;a++) {
@@ -34,7 +33,7 @@ public class Main {
 			int res = func(phone);
 			
 			if(res==0)		bw.write("NO\n");
-			else if(res==1)	bw.write("YES\n");
+			else if(res==1)		bw.write("YES\n");
 		}
 		
 		bw.flush();
