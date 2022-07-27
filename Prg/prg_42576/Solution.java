@@ -8,22 +8,14 @@ public class Solution {
         int num = 0;
         //참가자 해시에 넣음 
         HashMap<String, Integer> partMap = new HashMap<>();
-        for(int i=0;i<participant.length;i++) {
-        	//동명이인있으면 사람 수 증가
-        	if(partMap.containsKey(participant[i])) {
-        		num = partMap.get(participant[i]);
-        		partMap.put(participant[i], num + 1);
-        	}else {//처음 나오는 이름이면 1명 추가 
-        		partMap.put(participant[i], 1);
-        	}
+        for(String name:participant) {
+        	//(이름, 1명) 추가, 동명이인있으면 사람 수 증가
+        	partMap.put(name, partMap.getOrDefault(name, 0) + 1);
         }
         //완주자 해시에서 검색 
-        for(int i=0;i<completion.length;i++) {
-        	num = partMap.get(completion[i]);
-        	if(num > 0) {
-        		partMap.put(completion[i], num - 1);
-        	}
-        }
+       for(String name:completion) {
+    	   partMap.put(name, partMap.get(name) - 1);
+       }
         //나머지 한 명 리턴 
         for(String name : partMap.keySet()){ //저장된 key값 확인
         	//System.out.println("[Key]:" + name + " [Value]:" + partMap.get(name));
