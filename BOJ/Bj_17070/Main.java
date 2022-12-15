@@ -1,4 +1,4 @@
-package Bj_2098;
+package Bj_17070;
 
 public class Main {
 

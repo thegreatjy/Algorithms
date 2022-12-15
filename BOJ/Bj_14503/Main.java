@@ -45,8 +45,7 @@ public class Main {
 		//현재 위치 청소 
 		cleaned[r][c]=true;
 		++cnt;
-		
-		//System.out.println(r+", "+c);
+		System.out.println(r+", "+c);
 		
 		//현재 위치 주변 탐색 
 		for(int i=0;i<4;i++) {
@@ -65,7 +64,6 @@ public class Main {
 		nr = r +row[(4-d+1)%4];
 		nc = c +col[(4-d+1)%4];
 		if(map[nr][nc] == 0) {
-			--cnt;
 			dfs(nr, nc);
 			return ;
 		}else {

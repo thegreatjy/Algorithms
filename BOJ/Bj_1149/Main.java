@@ -20,7 +20,6 @@ public class Main {
 			for(int j=0;j<3;j++) {
 				house[i][j]=Integer.parseInt(str[j]);
 			}
-			
 			if(i==0) {
 				dp[0][0]=house[0][0];
 				dp[0][1]=house[0][1];
