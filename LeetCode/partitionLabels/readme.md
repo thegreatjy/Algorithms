@@ -1,5 +1,5 @@
 ## Partition Lables
-[Problem Link](https://leetcode.com/problems/partition-labels/, "leetcode problem link")
+[Problem Link](https://leetcode.com/problems/partition-labels/)
 
 
 - Runtime : 9ms
