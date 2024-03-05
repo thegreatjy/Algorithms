@@ -1,62 +1,51 @@
-package prg_1844;
+import java.util.ArrayDeque;
+import java.util.Deque;
 
-import java.util.*;
+class Solution {
+    static int[] rows = {0, 0, 1, -1};
+    static int[] cols = {1, -1, 0, 0};
 
-public class Solution {
-	static int[] row = {0,0,1,-1};
-	static int[] col = {1,-1,0,0};
-	
-	public int solution(int[][] maps) {
-        int answer = -1;
-        int N = maps.length;
-        int M = maps[0].length;
-        boolean[][] visited = new boolean[N][M];
-        
-        Queue<node> q = new LinkedList<>();
-        
-        q.offer(new node(N-1, M-1));
-        visited[N-1][M-1] = true;
-        
-        int nx, ny;
-        while(!q.isEmpty()) {
-        	node nd = q.poll();
-        	
-        	if(nd.x == 0 && nd.y==0) {
-        		return maps[nd.x][nd.y]; 
-        	}
-        	
-        	for(int i=0;i<4;i++) {
-        		nx = nd.x + row[i];
-        		ny = nd.y + col[i];
-        		if(nx<0 || nx>=N || ny<0 || ny>=M || visited[nx][ny])	continue;
-        		if(maps[nx][ny]==1) {
-        			q.offer(new node(nx, ny));
-        			visited[nx][ny] = true;
-        			maps[nx][ny] = maps[nd.x][nd.y] + 1;
-        		}
-        	}
+    class node{
+        int r;
+        int c;
+        int cnt;
+
+        node(int r, int c, int cnt){
+            this.r = r;
+            this.c = c;
+            this.cnt = cnt;
         }
-        
+    }
+    
+    public int solution(int[][] maps) {
+        int answer = -1;
+        int n = maps.length;
+        int m = maps[0].length;
+        boolean[][] visited = new boolean[n][m];
+
+        Deque<node> queue = new ArrayDeque<>();
+        queue.addLast(new node(0, 0, 1));
+        visited[0][0] = true;
+
+        int newR, newC;
+        while(!queue.isEmpty()){
+            node cur = queue.removeFirst();
+
+            if(cur.r == n - 1 && cur.c == m - 1){
+                answer = cur.cnt;
+            }
+
+            for(int i=0; i<4; i++){
+                newR = cur.r + rows[i];
+                newC = cur.c + cols[i];
+
+                if(newR < 0 || newR >= n || newC < 0 || newC >= m || maps[newR][newC] == 0 || visited[newR][newC]) continue;
+
+                queue.addLast(new node(newR, newC, cur.cnt + 1));
+                visited[newR][newC] = true;
+            }
+        }
+
         return answer;
     }
-	
-	public static void main(String[] args) {
-		int[][] map = {
-				{1,0,1,1,1},{1,0,1,0,1},{1,0,1,1,1},{1,1,1,0,1},{0,0,0,0,1}
-		};
-		int[][] maps2 = {
-				{1,0,1,1,1},{1,0,1,0,1},{1,0,1,1,1},{1,1,1,0,0},{0,0,0,0,1}
-		};
-		int result = new Solution().solution(maps2);
-		System.out.print(result);
-	}
-	
-	static class node{
-		int x, y;
-		
-		node(int x, int y){
-			this.x=x;
-			this.y=y;
-		}
-	}
 }
