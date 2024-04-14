@@ -1,3 +1,5 @@
+package prg_250137;
+
 class Solution {
     public int solution(int[] bandage, int health, int[][] attacks) {
         int answer = health;    // 현재 체력. 처음엔은 최대 최력으로 시작.

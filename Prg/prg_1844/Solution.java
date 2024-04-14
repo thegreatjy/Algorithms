@@ -1,3 +1,5 @@
+package prg_1844;
+
 import java.util.ArrayDeque;
 import java.util.Deque;
 
