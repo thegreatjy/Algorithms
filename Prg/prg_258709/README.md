@@ -1,5 +1,7 @@
 # [level 3] 주사위 고르기 - 258709 
 
+다시 풀어볼 것!
+
 [문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/258709) 
 
 ### 성능 요약
