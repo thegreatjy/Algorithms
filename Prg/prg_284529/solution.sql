@@ -1,0 +1,10 @@
+-- 코드를 작성해주세요
+-- 부서별 평균 연봉
+-- 소수점 첫째 자리에서 반올림
+SELECT d.DEPT_ID, d.DEPT_NAME_EN,
+       (ROUND(AVG(SAL), 0)) AS AVG_SAL
+FROM HR_DEPARTMENT d
+JOIN HR_EMPLOYEES e ON e.DEPT_ID = d.DEPT_ID
+GROUP BY DEPT_ID
+ORDER BY AVG_SAL desc
+;
