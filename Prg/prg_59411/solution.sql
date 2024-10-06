@@ -1,0 +1,9 @@
+-- 코드를 입력하세요
+-- 5:39 - 5:45
+-- 입양을 간 동물 중, 보호 기간이 가장 길었던 동물 두 마리
+SELECT o.ANIMAL_ID, o.NAME
+FROM ANIMAL_OUTS o
+LEFT JOIN ANIMAL_INS i ON i.ANIMAL_ID = o.ANIMAL_ID
+ORDER BY DATEDIFF(o.DATETIME, i.DATETIME) desc
+LIMIT 2
+;
